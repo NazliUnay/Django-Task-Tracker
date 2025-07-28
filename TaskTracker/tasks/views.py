@@ -15,3 +15,7 @@ def task_create(request):
     else:
         form = TaskForm()
     return render(request, 'tasks/task_form.html', {'form': form})
+
+def completed_tasks(request):
+    tasks = Task.objects.filter(status='done')
+    return render(request, 'tasks/completed_tasks.html', {'tasks': tasks})

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Tamamlanan Görevler{% endblock %}
+
+{% block content %}
+<h1>Tamamlanan Görevler</h1>
+
+<ul>
+  {% for task in tasks %}
+    <li><strong>{{ task.title }}</strong> - {{ task.description }}</li>
+  {% empty %}
+    <li>Hiç tamamlanan görev yok.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'task_list' %}">Tüm Görevler</a>
+{% endblock %}
