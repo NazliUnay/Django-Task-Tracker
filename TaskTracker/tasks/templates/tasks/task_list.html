@@ -1,12 +1,8 @@
-<!-- tasks/templates/tasks/task_list.html -->
+{% extends 'tasks/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Görev Listesi</title>
-</head>
-<body>
+{% block title %}Görev Listesi{% endblock %}
+
+{% block content %}
     <h1>Görevler</h1>
     <ul>
         {% for task in tasks %}
@@ -17,5 +13,4 @@
             <li>Görev yok.</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

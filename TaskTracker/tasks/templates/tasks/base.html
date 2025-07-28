@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Task Tracker{% endblock %}</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'task_list' %}">Tüm görevler</a>
+        <a href="#">Yeni Görev</a>
+        <a href="#">Tamamlanmış</a> 
+        <a href="#">Devam Eden</a>   
+        <a href="/admin/">Tamamlanmamış</a>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        <!-- Sayfalara özel içerik buraya gelecek -->
+        {% endblock %}
+    </div>
+</body>
+</html>
