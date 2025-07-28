@@ -6,6 +6,8 @@
     <h1>Görevler</h1>
     <ul>
         {% for task in tasks %}
+            <a href="{% url 'task_update' task.pk %}">Düzenle</a> | 
+            <a href="{% url 'task_delete' task.pk %}">Sil</a>
             <li>
                 <strong>{{ task.title }}</strong> - {{ task.description }} - {{ task.created_at|date:"Y-m-d H:i" }}
             </li>

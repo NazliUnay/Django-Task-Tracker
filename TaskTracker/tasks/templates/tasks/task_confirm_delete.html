@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Görev Sil{% endblock %}
+
+{% block content %}
+  <h1>Görev Sil</h1>
+  <p>"{{ task.title }}" görevini silmek istediğinize emin misiniz?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Evet, Sil</button>
+    <a href="{% url 'task_list' %}">İptal</a>
+  </form>
+{% endblock %}
