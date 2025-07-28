@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Devam Eden Görevler</title>
+</head>
+<body>
+    <h1>Devam Eden Görevler</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }}
+                [<a href="{% url 'complete_task' task.id %}">Tamamla</a>]
+                [<a href="{% url 'update_task' task.id %}">Düzenle</a>]
+                [<a href="{% url 'delete_task' task.id %}">Sil</a>]
+            </li>
+        {% empty %}
+            <li>Devam eden görev yok.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'task_list' %}">← Ana Sayfa</a>
+</body>
+</html>

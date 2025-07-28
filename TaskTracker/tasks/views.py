@@ -37,3 +37,7 @@ def task_delete(request, pk):
         task.delete()
         return redirect('task_list')
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+
+def ongoing_tasks(request):
+    tasks = Task.objects.filter(completed=False)
+    return render(request, 'ongoing_tasks.html', {'tasks': tasks})
