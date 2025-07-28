@@ -1,0 +1,21 @@
+<!-- tasks/templates/tasks/task_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Görev Listesi</title>
+</head>
+<body>
+    <h1>Görevler</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> - {{ task.description }} - {{ task.created_at|date:"Y-m-d H:i" }}
+            </li>
+        {% empty %}
+            <li>Görev yok.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
