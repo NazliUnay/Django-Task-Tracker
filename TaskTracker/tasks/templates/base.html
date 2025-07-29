@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Task Tracker{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
     <div class="navbar">
@@ -17,11 +16,20 @@
              <div></div>
         </div>
         <div class="menu" id="menu">
-            <a href="{% url 'task_list' %}">Tüm Görevler</a>
-            <a href="{% url 'task_create' %}">Yeni Görev</a>
-            <a href="{% url 'completed_tasks' %}">Tamamlanmış</a> 
-            <a href="{% url 'ongoing_tasks' %}">Devam Eden</a>    
-        </div>
+    <a href="{% url 'task_list' %}" data-title="Tüm Görevler">
+        <i class="fas fa-list-check"></i> Tüm Görevler
+    </a>
+    <a href="{% url 'task_create' %}" data-title="Yeni Görev Oluştur">
+        <i class="fas fa-plus-circle"></i> Yeni Görev
+    </a>
+    <a href="{% url 'completed_tasks' %}" data-title="Tamamlanmış Görevler">
+        <i class="fas fa-check-circle"></i> Tamamlanmış
+    </a> 
+    <a href="{% url 'ongoing_tasks' %}" data-title="Devam Eden Görevler">
+        <i class="fas fa-spinner"></i> Devam Eden
+    </a>    
+</div>
+
     </div>
 
     <!-- Overlay, menü açıkken arka planı kapatmak için -->

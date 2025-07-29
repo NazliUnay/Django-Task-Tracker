@@ -1,0 +1,30 @@
+.content {
+    padding: 40px 50px;
+    max-width: 900px;
+    margin: 0px 40px;
+    
+    /* Temiz ve modern görünüm için */
+    background-color: #fff; /* Beyaz arkaplan */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    border-radius: 12px; /* Hafif yuvarlatılmış köşeler */
+    
+    /* Okunabilirliği artırmak için */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.125rem; /* 18px civarı */
+    line-height: 1.6;
+    color: #333;
+    
+    /* Responsive esneklik */
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+/* Daha küçük ekranlar için duyarlılık */
+@media (max-width: 600px) {
+    .content {
+        padding: 20px 15px;
+        max-width: 100%;
+        font-size: 1rem;
+        margin: 0px 40px;
+    }
+}

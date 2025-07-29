@@ -1,0 +1,97 @@
+/* Genel liste ayarları */
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Ortak görev öğesi stilleri */
+.task-item,
+.ongoing-task-item,
+li {
+    background-color: #1e1e1e;
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer; /* Görevler tıklanabilir hissi için */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hover efekti: hafif büyütme ve renk açılması */
+.task-item:hover,
+.ongoing-task-item:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.03);
+}
+
+/* Görev listeleri için padding ve liste stili */
+.task-list,
+.ongoing-task-list {
+    padding: 0;
+    margin: 0;
+}
+
+/* Görev başlığı stili */
+.task-title,
+.task-header {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700; /* Daha belirgin */
+    flex: 1; /* Başlık mümkün olduğunca geniş olsun */
+    text-align: left; /* Metni sola hizala */
+    word-break: break-word; /* Uzun kelimeleri taş */
+    transition: color 0.3s ease;
+}
+
+/* Başlık hover efekti */
+.task-title:hover,
+.task-header:hover {
+    color: #ff6b6b;
+    cursor: pointer;
+}
+
+.task-actions {
+    display: flex;
+    flex-direction: row; /* Yatay hizalama */
+    gap: 10px;            /* İkonlar arası boşluk */
+    margin-left: 15px;
+    align-items: center;  /* Dikey ortalama (isteğe bağlı) */
+}
+
+
+
+/* İşlem bağlantıları (ikonlar veya yazılar) */
+.task-actions a {
+    font-size: 1.3rem; /* Biraz daha büyük */
+    color: #ff6b6b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover ve focus durumlarında renk değişimi */
+.task-actions a:hover,
+.task-actions a:focus {
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.task-description {
+  font-size: 0.9rem;
+  color: #bbbbbb;
+  margin-top: 4px;
+  line-height: 1.4;
+  flex-basis: 100%;
+}
+
+.task-date {
+    margin-right:10px;
+  text-align: right;
+  flex-shrink: 0; /* Eğer flex container içindeyse küçülmeyi engeller */
+  color: #aaa; /* İstersen tarih rengini hafif gri yapabilirsin */
+  font-size: 0.9rem;
+}

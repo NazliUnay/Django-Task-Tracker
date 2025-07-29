@@ -4,14 +4,15 @@
 
 {% block content %}
 <h2>Devam Eden Görevler</h2>
-<ul>
+<ul class="task-list">
     {% for task in tasks %}
-    <li>
-        {{ task.title }}
-        [<a href="{% url 'complete_task' task.id %}">Tamamla</a>]
-        [<a href="{% url 'task_update' task.id %}">Düzenle</a>]
-        [<a href="{% url 'task_delete' task.id %}">Sil</a>]
-
+    <li class="task-item">
+        <span class="task-title">{{ task.title }}</span>
+        <div class="task-actions">
+            <a href="{% url 'complete_task' task.id %}" title="Tamamla"><i class="fas fa-check"></i></a>
+            <a href="{% url 'task_update' task.id %}" title="Düzenle"><i class="fas fa-pen"></i></a>
+            <a href="{% url 'task_delete' task.id %}" title="Sil"><i class="fas fa-trash"></i></a>
+        </div>
     </li>
     {% empty %}
     <li>Devam eden görev yok.</li>

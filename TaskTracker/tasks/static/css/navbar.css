@@ -1,0 +1,151 @@
+.navbar {
+    background-color: #1f1f1f;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 1200;
+    /* Geçiş efekti ekleyelim, renk değişimlerinde yumuşak olsun */
+    transition: background-color 0.3s ease;
+}
+
+/* Menü için flex yönünü row olarak bırakabiliriz, hover efektini güçlendirelim */
+.menu {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+/* Linkler */
+.menu a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    user-select: none;
+}
+
+/* Hover ve focus durumlarında */
+.menu a:hover,
+.menu a:focus {
+    color: #00bcd4;
+    background-color: rgba(0, 188, 212, 0.1);
+    outline: none;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1300;
+    /* Kullanıcıya görsel geri bildirim için */
+    transition: transform 0.3s ease;
+}
+
+/* Hamburger çubukları */
+.hamburger div {
+    width: 100%;
+    height: 3px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger aktifken animasyon (X işareti) */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        height: 100vh;
+        width: 260px;
+        background-color: #1f1f1f;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.7);
+        flex-direction: column;
+        padding-top: 60px;
+        transition: right 0.3s ease;
+        z-index: 1200;
+        /* Kaydırma olmaması için overflow */
+        overflow-y: auto;
+    }
+
+    /* Menü açıldığında görünür yap */
+    .menu.active {
+        right: 0;
+    }
+
+    /* Menüdeki linkler */
+    .menu a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+        font-weight: 600;
+        display: block;
+        user-select: none;
+    }
+
+    /* Menü linklerine hover efekti */
+    .menu a:hover,
+    .menu a:focus {
+        background-color: rgba(0, 188, 212, 0.15);
+        color: #00bcd4;
+        outline: none;
+    }
+}
+
+/* Menü açıkken sayfa kaydırmasını engellemek için body overflow kontrolü (JS ile eklenmeli) */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Overlay arka planı */
+#overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1100;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Overlay aktifken */
+#overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Overlay gizlenirken yumuşak kapanma için */
+#overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
