@@ -39,5 +39,11 @@ def task_delete(request, pk):
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
 
 def ongoing_tasks(request):
-    tasks = Task.objects.filter(completed=False)
-    return render(request, 'ongoing_tasks.html', {'tasks': tasks})
+    tasks = Task.objects.exclude(status='done')
+    return render(request, 'tasks/ongoing_tasks.html', {'tasks': tasks})
+
+def complete_task(request, id):
+    task = Task.objects.get(id=id)
+    task.status = 'completed'  # ya da uygun durum
+    task.save()
+    return redirect('task_list')  # ya da uygun sayfa

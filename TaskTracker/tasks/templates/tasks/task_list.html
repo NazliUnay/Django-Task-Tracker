@@ -1,18 +1,30 @@
-{% extends 'tasks/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Görev Listesi{% endblock %}
 
 {% block content %}
-    <h1>Görevler</h1>
-    <ul>
-        {% for task in tasks %}
-            <a href="{% url 'task_update' task.pk %}">Düzenle</a> | 
-            <a href="{% url 'task_delete' task.pk %}">Sil</a>
-            <li>
-                <strong>{{ task.title }}</strong> - {{ task.description }} - {{ task.created_at|date:"Y-m-d H:i" }}
-            </li>
-        {% empty %}
-            <li>Görev yok.</li>
-        {% endfor %}
-    </ul>
+<h1>Görevler</h1>
+<ul class="task-list">
+    {% for task in tasks %}
+    <li class="task-item">
+        <div class="task-actions">
+            <a href="{% url 'task_update' task.pk %}" title="Düzenle">
+                <i class="fas fa-pen"></i>
+            </a>
+            <a href="{% url 'task_delete' task.pk %}" title="Sil">
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+        <div class="task-info">
+            <div class="task-header">
+                <div class="task-title">{{ task.title }}</div>
+                <div class="task-date">{{ task.created_at|date:"Y-m-d H:i" }}</div>
+            </div>    
+            <div class="task-description">{{ task.description }}</div>  
+        </div>
+    </li>
+    {% empty %}
+    <li>Görev yok.</li>
+    {% endfor %}
+</ul>
 {% endblock %}

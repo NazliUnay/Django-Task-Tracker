@@ -1,58 +1,232 @@
+/* Genel */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #121212; /* Koyu siyah-gri ton */
+    color: #e0e0e0;           /* Açık gri metin */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Navbar */
 .navbar {
-    background-color: #007BFF;
-    padding: 1em;
+    background-color: #1f1f1f; /* Daha açık koyu gri */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 1200;
+}
+
+/* Menü linkleri (masaüstü) */
+.menu {
     display: flex;
     gap: 20px;
+    position: static;      /* Masaüstünde normal akışta */
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    flex-direction: row;   /* Yatay */
+    padding-top: 0;
+    transition: none;
 }
 
-.navbar a {
-    color: white;
+.menu a {
+    color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 0;             /* Masaüstünde padding kaldır */
+    border-bottom: none;    /* Alt çizgi yok */
 }
 
-.navbar a:hover {
+.menu a:hover {
+    color: #00bcd4; /* Canlı turkuaz */
+}
+
+/* Hamburger ikon (mobil) */
+.hamburger {
+    display: none; /* Masaüstünde gizli */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1300; /* Menü üstünde */
+}
+
+.hamburger div {
+    width: 100%;
+    height: 3px;
+    background-color: #00bcd4; /* Turkuaz renk */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobil görünüm */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between; /* Hamburger ve menü arası boşluk */
+        padding: 15px 20px;
+    }
+
+    /* Hamburger görünür */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menü sağdan kayan ve gizli */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -260px; /* Başlangıçta görünmez */
+        height: 100vh;
+        width: 260px;
+        background-color: #1f1f1f;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.7);
+        flex-direction: column;
+        padding-top: 60px;
+        transition: right 0.3s ease;
+        z-index: 1200;
+        display: flex; /* Mobilde görünür ama sağda gizli */
+        gap: 0;       /* Aralık sıfır */
+    }
+
+    /* Menü açıkken sağa kaydır */
+    .menu.active {
+        right: 0;
+    }
+
+    /* Menü linkleri mobil */
+    .menu a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+        font-weight: 600;
+        display: block;
+    }
+}
+
+/* İçerik alanı */
+.content {
+    padding: 40px 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Başlık renkleri */
+h1, h2, h3 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Liste stilleri */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    background-color: #1e1e1e;
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+li a {
+    color: #00bcd4;
+    margin-left: 12px;
+    font-size: 0.9rem;
+}
+
+li a:hover {
     text-decoration: underline;
 }
 
-.content {
-    padding: 2em;
-    background-color: white;
-    max-width: 800px;
-    margin: 2em auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3 {
-    color: #333;
-}
-
-button, input[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
+a {
     cursor: pointer;
 }
-
-button:hover, input[type="submit"]:hover {
-    background-color: #218838;
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5); /* yarı şeffaf siyah */
+  z-index: 1100;
+  display: none; /* Başlangıçta gizli */
 }
 
-input[type="text"], textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+/* Menü açılınca overlay görünür */
+#overlay.active {
+  display: block;
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #1e1e1e;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+.task-info {
+    flex-grow: 1;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.task-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00ffff;
+}
+
+.task-date {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.task-description {
+    font-size: 1em;
+    color: #ddd;
+}
+
+.task-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.task-actions a {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.task-actions a:hover {
+    color: #fff;
 }
