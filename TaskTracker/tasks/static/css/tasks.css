@@ -5,7 +5,7 @@ ul {
     margin: 0;
 }
 
-/* Ortak görev öğesi stilleri */
+/* Görev öğesi (ortak) */
 .task-item,
 .ongoing-task-item,
 li {
@@ -15,83 +15,122 @@ li {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     transition: background-color 0.3s ease, transform 0.3s ease;
-    cursor: pointer; /* Görevler tıklanabilir hissi için */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Hover efekti: hafif büyütme ve renk açılması */
+/* Hover efekti */
 .task-item:hover,
 .ongoing-task-item:hover {
     background-color: #2a2a2a;
     transform: scale(1.03);
 }
 
-/* Görev listeleri için padding ve liste stili */
+/* Liste boşluk ayarı */
 .task-list,
 .ongoing-task-list {
     padding: 0;
     margin: 0;
 }
 
-/* Görev başlığı stili */
+/* Başlık ve açıklama */
 .task-title,
 .task-header {
     color: #fff;
     font-size: 1.2rem;
-    font-weight: 700; /* Daha belirgin */
-    flex: 1; /* Başlık mümkün olduğunca geniş olsun */
-    text-align: left; /* Metni sola hizala */
-    word-break: break-word; /* Uzun kelimeleri taş */
+    font-weight: 700;
+    flex: 1;
+    text-align: left;
+    word-break: break-word;
     transition: color 0.3s ease;
 }
 
-/* Başlık hover efekti */
 .task-title:hover,
 .task-header:hover {
     color: #ff6b6b;
     cursor: pointer;
 }
 
+/* Açıklama */
+.task-description {
+    font-size: 0.9rem;
+    color: #bbbbbb;
+    margin-top: 4px;
+    line-height: 1.4;
+    flex-basis: 100%;
+}
+
+/* Tarih */
+.task-date {
+    margin-right: 10px;
+    text-align: right;
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Görev işlem butonları */
 .task-actions {
     display: flex;
-    flex-direction: row; /* Yatay hizalama */
-    gap: 10px;            /* İkonlar arası boşluk */
+    flex-direction: row;
+    gap: 10px;
     margin-left: 15px;
-    align-items: center;  /* Dikey ortalama (isteğe bağlı) */
+    align-items: center;
 }
 
-
-
-/* İşlem bağlantıları (ikonlar veya yazılar) */
+/* Buton ve linkler (düzenle, sil, tamamla) */
+.task-actions button,
 .task-actions a {
-    font-size: 1.3rem; /* Biraz daha büyük */
+    cursor: pointer;
+    font-size: 1.3rem;
     color: #ff6b6b;
+    background: none !important;
+    border: none !important;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
-/* Hover ve focus durumlarında renk değişimi */
+/* Buton hover/focus */
+.task-actions button:hover,
 .task-actions a:hover,
+.task-actions button:focus,
 .task-actions a:focus {
     color: #fff;
-    outline: none;
-    cursor: pointer;
+    background-color: #ff6b6b;
 }
 
-.task-description {
-  font-size: 0.9rem;
-  color: #bbbbbb;
-  margin-top: 4px;
-  line-height: 1.4;
-  flex-basis: 100%;
+/* İkonlar */
+.task-actions button i,
+.task-actions a i {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    background: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    backdrop-filter: none !important;
 }
 
-.task-date {
-    margin-right:10px;
-  text-align: right;
-  flex-shrink: 0; /* Eğer flex container içindeyse küçülmeyi engeller */
-  color: #aaa; /* İstersen tarih rengini hafif gri yapabilirsin */
-  font-size: 0.9rem;
+/* Mobil uyum */
+@media (max-width: 480px) {
+    .task-item,
+    .ongoing-task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 15px;
+    }
 }

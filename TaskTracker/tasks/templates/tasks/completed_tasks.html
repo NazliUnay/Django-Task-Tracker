@@ -7,7 +7,17 @@
 
 <ul>
   {% for task in tasks %}
-    <li><strong>{{ task.title }}</strong> - {{ task.description }}</li>
+    <li>
+      <div class="task-header">
+        <div class="task-title">{{ task.title }}</div>
+        <div class="task-description">{{ task.description }}</div>  
+        <small>Tamamlanma Tarihi: {{ task.completed_at|date:"d.m.Y H:i" }}</small>
+      </div>
+      <div class="task-actions">
+        <a href="{% url 'task_update' task.id %}" title="Düzenle"><i class="fas fa-pen"></i></a>
+        <a href="{% url 'task_delete' task.id %}" title="Sil"><i class="fas fa-trash"></i></a>
+      </div>
+    </li>
   {% empty %}
     <li>Hiç tamamlanan görev yok.</li>
   {% endfor %}

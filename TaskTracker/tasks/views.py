@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Task
 from .forms import TaskForm
+from django.views.decorators.http import require_POST
+from django.utils import timezone
 
 def task_list(request):
     tasks = Task.objects.all().order_by('-created_at')
@@ -42,8 +44,10 @@ def ongoing_tasks(request):
     tasks = Task.objects.exclude(status='done')
     return render(request, 'tasks/ongoing_tasks.html', {'tasks': tasks})
 
+@require_POST
 def complete_task(request, id):
-    task = Task.objects.get(id=id)
-    task.status = 'completed'  # ya da uygun durum
+    task = get_object_or_404(Task, id=id)
+    task.status = 'done'  # STATUS_CHOICES içindeki uygun değer= models.DateTimeField(null=True, blank=True)
+    task.completed_at=timezone.now()
     task.save()
-    return redirect('task_list')  # ya da uygun sayfa
+    return redirect('task_list')

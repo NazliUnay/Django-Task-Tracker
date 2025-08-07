@@ -6,10 +6,17 @@
 <h2>Devam Eden Görevler</h2>
 <ul class="task-list">
     {% for task in tasks %}
+    <div class="task-date">{{ task.created_at|date:"Y-m-d H:i" }}</div>
     <li class="task-item">
+        
         <span class="task-title">{{ task.title }}</span>
         <div class="task-actions">
-            <a href="{% url 'complete_task' task.id %}" title="Tamamla"><i class="fas fa-check"></i></a>
+            <form action="{% url 'complete_task' task.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                 <button type="submit" title="Tamamla" >
+                        <i class="fas fa-check"></i>
+                 </button>
+            </form>
             <a href="{% url 'task_update' task.id %}" title="Düzenle"><i class="fas fa-pen"></i></a>
             <a href="{% url 'task_delete' task.id %}" title="Sil"><i class="fas fa-trash"></i></a>
         </div>
