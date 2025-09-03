@@ -10,6 +10,19 @@ Bu proje, Django kullanılarak geliştirilmiş basit bir görev takip uygulamas�
 - Admin panel üzerinden yönetim
 - Basit ve hızlı kurulum
 
+---
+
+## 📷 Ekran Görüntüsü
+### Bilgisayar Ekranı ###
+<img src="docs/Bilgisayar-Ekranı.png" alt="Flask GitHub Activity" width="600"/>
+
+### Görev Ekleme ###
+<img src="docs/Yeni-Görev.png" alt="Flask GitHub Activity" width="400"/>
+
+### Menu ###
+<img src="docs/Tel-Ekranında-Menu.png" alt="Flask GitHub Activity" width="400"/>
+
+---
 ## 🛠️ Teknolojiler
 
 - Python 3.x
